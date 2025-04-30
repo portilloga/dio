@@ -4,11 +4,11 @@
    
    `https://portal.azure.com`
    
-   ![image1](/run/user/1001/doc/cf89be74/1.png)
+   ![image1](images/1.png)
 
 2. Criar máquina virtual
    
-   1. ![image1](/run/user/1001/doc/2e9b71c1/2.png)
+   1. ![image1](images/2.png)
 
 3. Selecione "Criar um recurso" na tela incial
 
