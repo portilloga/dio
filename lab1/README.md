@@ -3,10 +3,12 @@
 1. Entre no portal do Azure.
    
    `https://portal.azure.com`
+   
+   ![image1](/run/user/1001/doc/cf89be74/1.png)
 
 2. Criar máquina virtual
    
-   1. 
+   1. ![image1](/run/user/1001/doc/2e9b71c1/2.png)
 
 3. Selecione "Criar um recurso" na tela incial
 
@@ -18,9 +20,9 @@
 
 7. Em Detalhes da instância:
    
-   1.  insira **myVM** para o Nome da máquina virtual 
+   1. insira **myVM** para o Nome da máquina virtual 
    
-   2.  Escolha ***Ubuntu Server 22.04 LTS – Gen2*** para Imagem.
+   2. Escolha ***Ubuntu Server 22.04 LTS – Gen2*** para Imagem.
 
 8. Em region selecione **North Central US**.
 
