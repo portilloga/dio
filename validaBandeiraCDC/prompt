@@ -1,0 +1,160 @@
+In the validaBandeiraCDC folder, execute the following instructions
+=== web service instructions==
+Create a python3 v3.8.20 project to run a web service that exposes the REST API resource /validateFlag/{creditCardNumber}, usig the GET html verb.
+---
+REQUEST
+=== example ===
+the request must be like this: 
+curl GET http://localhost:3000/validateFlag/1234567890123456
+=== example ===
+---
+RESPONSE
+the responses must be like these:
+
+=== example ===
+1.- the response ok must be like this:
+
+html code: 200 
+response body:
+{
+	"cardNumber": "1234567890123456",
+	"isValid": TRUE,
+	"message":"credit card flag: Visa"
+}
+=== example ===
+2.- The response Invalid number must be like this:
+
+html code: 200 
+response body:
+{
+	"cardNumber": "1234567890123456",
+	"isValid": FALSE,
+	"message":"invalid credit card number"
+}
+=== example ===
+=== example ===
+3.- the response Invalid flag must be like this:
+
+html code: 200 
+response body:
+{
+	"cardNumber": "1234567890123456",
+	"isValid": FALSE,
+	"message":"Inexistent credit card flag"
+}
+=== example ===
+---
+The validateFlag resource has to call a validateFlag method from a CreditCard class.
+=== web service instructions==
+
+=== backend service instructions==
+The validateFlag method has to implement flag card validation using the following rules:
+=== rules ===
+Visa:
+	Regex: ^4\d{5}
+	Card Number Length: 13, 16, 19
+	Range: 4xxxxx
+
+Mastercard:
+	Regex: ^(5[1-5]\d{4}|2(2(2[1-9]\d{2}|[3-9]\d{3})|[3-6]\d{4}|7([01]\d{3}|20\d{2})))
+	Card Number Length: 16
+	Range: 51xxxx ~ 55xxxx, 2221xx ~ 2720xx
+
+American Express:
+	Regex: ^3[47]\d{4}
+	Card Number Length: 15
+	Range: 34xxxx, 37xxxx
+
+
+Hipercard
+	Regex: ^(?:3841[046]0|6(?:06282|37(?:095|5(?:68|99)|6(?:09|12))))
+	Card Number Length: 14, 16
+	Range: 384100, 384140, 384160, 606282, 637095, 637568, 637599, 637609, 637612
+
+Diners International:
+	Regex: ^3[689]\d{4}
+	Card Number Length: 14
+	Range: 36xxxx, 38xxxx, 39xxxx
+
+Elo:
+	Regex: ^(4(0117[89]|3(1274|8935)|5(1416|7(393|63[12])))|50(4175|6(699|7([0-6]\d|7[0-8]))|9\d{3})|6(27780|36(297|368)|5(0(0(3[1-35-9]|4\d|5[01])|4(0[5-9]|([1-3]\d|8[5-9]|9\d))|5([0-2]\d|3[0-8]|4[1-9]|[5-8]\d|9[0-8])|7(0\d|1[0-8]|2[0-7])|9(0[1-9]|[1-6]\d|7[0-8]))|16(5[2-9]|[67]\d)|50([01]\d|2[1-9]|[34]\d|5[0-8]))))
+	Card Number Length: 16
+	Range: 401178, 401179, 431274, 438935, 451416, 457393, 457631, 457632, 504175, 506699 ~ 506778, 509000 ~ 509999, 627780, 636297, 636368, 650031 ~ 650033, 650035 ~ 650051, 650405 ~ 650439, 650485 ~ 650538, 650541 ~ 650598, 650700 ~ 650718, 650720 ~ 650727, 650901 ~ 650978, 651652 ~ 651679, 655000 ~ 655019, 655021 ~ 655058
+=== rules ===
+---
+=== web service instructions==
+=== code test instructions==
+Implement functional test for the method sand the resource.
+=== code test instructions==
+=== general instructions==
+implement handle exceptions and returns  a 500 insternal server error if an exception occurs
+Generate documented code.
+=== general instructions==
+---
+in summary, create a python3 v3.8.20 project to run a web service that exposes the REST API resource /validateFlag/{creditCardNumber} and a CreditCard class with a validateFlag method, thismethod will be called from the validateFlag apiResource and it responses with infromation about the credit card validate and flag. Generates respexctive exception handle, code comments and  functional test.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Generate a readme.md file that includes the name of the project validaBandeiraCDC and describes how the program works snd include the instructions below to execute the prrogram, the test and include the examples curls instructions and answers too
+
+How to run:
+
+1.- Install dependencies:
+pip install fastapi uvicorn
+
+2.- Start the server:
+
+uvicorn webServer:app --reload --port 3000
+
+3.- Run tests:
+pip install pytest
+pytest testn.py
+
+
+
+
+
+curl --location 'http://127.0.0.1:3000/validateFlag/4234567890123456'
+{
+    "cardNumber": "4234567890123456",
+    "isValid": true,
+    "message": "credit card flag: Visa"
+}
+
+
+
+curl --location 'http://127.0.0.1:3000/validateFlag/2234567890123456'
+
+{
+    "cardNumber": "2234567890123456",
+    "isValid": true,
+    "message": "credit card flag: Mastercard"
+}
+
+curl --location 'http://127.0.0.1:3000/validateFlag/38410078901234'
+{
+    "cardNumber": "38410078901234",
+    "isValid": true,
+    "message": "credit card flag: Diners International"
+}
+
+
+curl --location 'http://127.0.0.1:3000/validateFlag/3841007890123456'
+{
+    "cardNumber": "3841007890123456",
+    "isValid": false,
+    "message": "Inexistent credit card flag"
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+incorporate the test results: 
+"================================================================= test session starts =================================================================
+platform linux -- Python 3.12.7, pytest-7.4.4, pluggy-1.0.0
+rootdir: /home/portilloga/work/workspace/github/dio/validaBandeiraCDC
+plugins: anyio-4.2.0
+collected 4 items                                                                                                                                     
+
+test.py ....                                                                                                                                    [100%]" 
+in the reame.md file
